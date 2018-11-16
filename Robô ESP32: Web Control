@@ -1,0 +1,143 @@
+<html>
+<title>Robô ESP32: Web Control</title>
+<head>
+<link rel="icon" type="ico/png" href="https://avatars2.githubusercontent.com/u/9865736?s=460&v=4"/>
+</head>
+<style>
+body {background-color: white}
+h1 {color:white}
+html{
+	max-width: 100%;
+	height: 100%;
+}
+button {
+	color: black;
+	background:white;
+	border: 1px solid #000;
+	border-radius: 8px;
+	position: center;
+	box-shadow: rgba(0,0,0,.7) 3px 3px 10px;
+}
+body{
+        margin: 0;
+        font: 14px Lucida sans;
+        background: #333 url('http://www.iwebdesigner.it/wp-content/uploads/2012/04/textures-patterns-gradients-2.png') center center fixed;
+        -webkit-background-size: cover;
+          -moz-background-size: cover;
+            -o-background-size: cover;
+                background-size: cover;
+        color: #fff;
+    }
+#wrap{
+        margin: 0 auto;
+        max-width: 50%;
+        background: rgba(255,255,255,.2);
+        border-radius: 15px;
+        text-shadow: rgba(0,0,0,5) 0 0 10px;
+        box-shadow: rgba(0,0,0,5) 0 0 10px;
+        text-align: center;
+        padding: 1em 1em;
+    }
+#pedro{
+        font: 15px 'Arial';
+        text-align: left;
+	padding-left: 20px;
+        text-shadow: rgba(0,0,0,1) 0 0 10px;
+    }
+.rotate180 {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.rotate90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.rotate270 {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+</style>
+
+<body>
+<br><br><br><br>
+<div id="wrap">
+<div style="text-align:center">
+
+<h1> Robô ESP32: Web Control  <img style="height: 50px"src="https://avatars2.githubusercontent.com/u/9865736?s=460&v=4"></h1>
+<br><br>
+<br><br>
+
+<span style="display:inline-block;padding:0px;border-radius: 15px;border:2px rgba(255,255,255,.2) solid; font-size: 140%;font-weight: bold;">
+<span style="display:inline-block;padding:0px;border-radius: 15px;border:2px rgba(0,0,0,.2) solid;">
+	<br>
+	<button style="height: 75px; width: 75px" onclick="forward()"><img style="height: 35px"src="http://www.clker.com/cliparts/a/f/2/d/1298026466992020846arrow.png"class="rotate270"></button>
+	<br><br><br><br>
+	<img hspace="10" style="padding-left: 5px">
+	<button style="height: 75px; width: 75px" onclick="left()"><img style="height: 35px"src="http://www.clker.com/cliparts/a/f/2/d/1298026466992020846arrow.png"class="rotate180"></button>
+	<img hspace="20" style="padding-left: 10px">
+	<button style="height: 75px; width: 75px" onclick="stop()"><img style="height: 55px"src="https://www.clker.com/cliparts/1/3/f/7/1352355175690954175button-blue.png"></button>
+	<img hspace="20" style="padding-left: 10px">
+	<button style="height: 75px; width: 75px" onclick="right()"><img style="height: 35px"src="http://www.clker.com/cliparts/a/f/2/d/1298026466992020846arrow.png"></button>
+	<img hspace="10" style="padding-left: 5px">
+	<br><br><br><br>
+	<button style="height: 75px; width: 75px" onclick="reverse()"><img style="height: 35px"src="http://www.clker.com/cliparts/a/f/2/d/1298026466992020846arrow.png"class="rotate90"></button>
+	<br><br><br>
+
+	<p>Velocidade</p>
+	<img hspace="5" style="padding-left: 4px">
+	<button style="height: 50px; width: 50px; background: rgba(150,255,150,1); font-size: 18px" onclick="nospeed()">0</button>
+	<img hspace="20" style="padding-left: 20px">
+	<button style="height: 50px; width: 50px; background: rgba(255,255,150,1); font-size: 18px" onclick="lowspeed()">1</button>
+	<img hspace="20" style="padding-left: 20px">
+	<button style="height: 50px; width: 50px; background: rgba(255,155,100,1); font-size: 18px" onclick="regularspeed()">2</button>
+	<img hspace="20" style="padding-left: 20px">
+	<button style="height: 50px; width: 50px; background: rgba(255,100,100,1); font-size: 18px" onclick="highspeed()">3</button>
+	<img hspace="10" style="padding-left: 5px">
+	<br><p id="pedro">Pedro Kern</p>
+	
+</span>
+
+</div>
+
+<script>
+var xmlhttp;
+xmlhttp=new XMLHttpRequest();
+
+function forward()
+{
+	xmlhttp.open("GET","cgi-bin/forward.cgi",true);
+	xmlhttp.send();
+}
+function stop()
+{
+	xmlhttp.open("GET","cgi-bin/stop.cgi",true);
+	xmlhttp.send();
+}
+function left()
+{
+	xmlhttp.open("GET","cgi-bin/left.cgi",true);
+	xmlhttp.send();
+}
+function right()
+{
+	xmlhttp.open("GET","cgi-bin/right.cgi",true);
+	xmlhttp.send();
+}
+function reverse()
+{
+	xmlhttp.open("GET","cgi-bin/reverse.cgi",true);
+	xmlhttp.send();
+}
+</script>
+
+</body>
+</html>
